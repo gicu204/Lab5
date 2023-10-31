@@ -259,13 +259,13 @@ int main(void)
                                 case 2:
                                     scanf(" %c", &c);
                                         push(stack, 0, c, 0, stack->type[s]);
-                                        printf("\nElement %c pushed onto the stack.\n", c);
+                                        printf("\nElement '%c' pushed onto the stack.\n", c);
                                     try_peek = peek(stack, 0, &peek_val2, 0, stack->type[s]);
 
                                         if(try_peek == false){
                                             printf("\nStack Contents: ( empty ) \n");
                                         } else{
-                                            printf("\nStack Contents: %c", peek_val2);
+                                            printf("\nStack Contents: '%c'", peek_val2);
                                         }
                                 break;
                                 case 3:
@@ -286,7 +286,6 @@ int main(void)
                             s = stack->size - 1;
                             //printf(" %d", stack->type[s]);
                             switch(stack->type[s]){
-                                break;
                                 case 1:
                                     try_pop = pop(stack, &pop_val1, 0, 0, stack->type[s]);
 
@@ -295,13 +294,6 @@ int main(void)
                                         }else {
                                             printf("\nPopped Value: %d\n", pop_val1);
                                         }
-                                    try_peek = peek(stack, &peek_val1, 0, 0, stack->type[s]);
-
-                                            if(try_peek == false){
-                                                //printf("\nStack Contents: ( empty ) \n");
-                                            } else{
-                                                printf("\nStack Contents: %d", peek_val1);
-                                            }
                                 break;
                                 case 2:
                                     try_pop = pop(stack, 0, &pop_val2, 0, stack->type[s]);
@@ -309,14 +301,7 @@ int main(void)
                                         if (try_pop == false){
                                             printf("\nPop Failed.\n");
                                         }else {
-                                            printf("\nPopped Value: %c\n", pop_val2);
-                                        }
-                                    try_peek = peek(stack, 0, &peek_val2, 0, stack->type[s]);
-
-                                        if(try_peek == false){
-                                            //printf("\nStack Contents: ( empty ) \n");
-                                        } else{
-                                            printf("\nStack Contents: %c", peek_val2);
+                                            printf("\nPopped Value: '%c'\n", pop_val2);
                                         }
                                 break;
                                 case 3:
@@ -327,6 +312,30 @@ int main(void)
                                         }else {
                                             printf("\nPopped Value: %f\n", pop_val3);
                                         }
+                                break;
+                            }
+
+                            s = stack->size - 1;
+                            switch(stack->type[s]){
+                                case 1:
+                                    try_peek = peek(stack, &peek_val1, 0, 0, stack->type[s]);
+
+                                            if(try_peek == false){
+                                                //printf("\nStack Contents: ( empty ) \n");
+                                            } else{
+                                                printf("\nStack Contents: %d", peek_val1);
+                                            }
+                                break;
+                                case 2:
+                                    try_peek = peek(stack, 0, &peek_val2, 0, stack->type[s]);
+
+                                        if(try_peek == false){
+                                            //printf("\nStack Contents: ( empty ) \n");
+                                        } else{
+                                            printf("\nStack Contents: '%c'", peek_val2);
+                                        }
+                                break;
+                                case 3:
                                     try_peek = peek(stack, 0, 0, &peek_val3, stack->type[s]);
 
                                         if(try_peek == false){
@@ -396,7 +405,7 @@ int main(void)
                         verify = false;
                     break;
         }
-        info(stack);
+        if (verify) info(stack);
 
     }
 
